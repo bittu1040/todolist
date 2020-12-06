@@ -50,11 +50,6 @@ app.post('/api/login', function (req, res, next) {
                         token, sucess:"login can be done"
                     })
                 })
-                // res.json({
-                //     success: "login can be done",
-                //     userid: result[0].id,
-                //     result: result
-                // })
             }
             else {
                 res.json({ success: "wrong password" })
