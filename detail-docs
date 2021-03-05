@@ -1,0 +1,871 @@
+01 june 2020
+To do list web application
+Features.
+Login page
+Registration page
+Needs token based authentication
+Add/edit/remove task
+On the first page the maximum number of tasks should be 10. Next will be displayed on the next page.
+Maximum number of tasks added is of no limit.
+Task can be linked to google calendar 
+Only text will be included in the task. And no limit of text. 
+Priority tasks will have different indications.
+Folders can be made and in that we can write the task
+Only authorized users can view/edit/delete their own task.
+
+
+
+02 june 2020 to 
+
+learning - 
+
+Questions
+Oops concept- I have studied and not much confidence in this. 
+Token based authentication -- 
+	-- what is the “save password” concept. How to do that.
+	-- while returning tokens from the server, where it stores. How it happens.
+Learn basic of database and make ER diagram (entity relationship)
+             https://app.lucidchart.com/documents/view/99b94412-82e0-4856-ae28-bb8027953e2c/0_0
+
+What is mvc platform 
+Why auto_increment is not working while inserting data manually through query.
+If i get any api which is public, like covid data api. How i can implement this in our application. Weather api, map api, any api how to implement in your web app or mobile app
+
+
+
+
+
+
+
+
+
+Database structure
+Database name- todolist
+Tables- users, notes.
+
+**** command to get the query history, to create the tables. If I forgot the query--    
+cat ~/.mysql_history
+
+******  cat ~/.mysql_history | python2.7 -c "import sys; print(''.join([l.decode('unicode-escape') for l in sys.stdin]))"
+
+
+Table - users
+
+
+CREATE TABLE users(
+  id int(255) NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  created_on datetime DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1
+
+
+Working query
+CREATE TABLE users(
+  id int(255) NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  created_on datetime DEFAULT NULL,
+  PRIMARY KEY (id)
+);
++------------+--------------+------+-----+---------+----------------+
+| id         | int(255)     | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| password   | varchar(255) | NO   |     | NULL    |                |
+| created_on | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table- notes
+CREATE TABLE `notes` (
+  `id` int(255) NOT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `user_id` int(5) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `deleted_on` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+Correct query 
+CREATE TABLE notes(
+  id int(255) NOT NULL,
+  notes varchar(255) DEFAULT NULL,
+  user_id int(5) DEFAULT NULL,
+  updated_on datetime DEFAULT NULL,
+  deleted_on datetime DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY user_id (user_id)
+);
+
+
++------------+--------------+------+-----+---------+-------+
+| Field  	| Type     	| Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id     	| int(255) 	| NO   | PRI | NULL	|   	|
+| notes  	| varchar(255) | YES  | 	| NULL	|   	|
+| user_id	| int(5)   	| YES  | MUL | NULL	|   	|
+| updated_on | datetime 	| YES  | 	| NULL	|   	|
+| deleted_on | datetime 	| YES  | 	| NULL	|   	|
++------------+--------------+------+-----+---------+-------+
+
+
+
+Visualize your database in DBEAVER
+https://dbeaver.io/download/
+
+
+
+
+
+
+
+
+
+
+
+
+14th june 2020
+        
+Learn basics of node and express
+list of APIs / routes
+
+If i get any api which is public, like covid data api. How i can implement this in our application.
+
+
+     
+
+
+
+
+
+
+
+
+***********************************************************************************************************
+Steps to be followed while making a to do list mobile app.
+
+Make ER diagram for this database
+ Or make understandable database structure
+Create database and tables in mysql.
+Create account in bitbucket and setting up git and everything 
+Setting up node, express and understand how it works.
+Understand about api. Make your own understandable end points according to different task.
+Understand routing in express, Create sample API and send dummy data. 
+Learn and understand json, middleware, body parser.
+ 
+
+
+
+
+20th june 2020
+
+Learn resource naming. 
+https://restfulapi.net/resource-naming/
+
+API(application program interface)
+
+Get note in your application
+GET http://www.todolist.com/api/note
+
+Post some note in application
+POST http://www.todolist.com/api/note
+
+Delete note in your application
+DELETE http://www.todolist.com/api/note?id=5
+
+Update your note
+PUT http://www.todolist.com/api/note
+
+todolist.com/api/register
+todolist.com/api/login
+todolist.com/api/logout
+
+
+26th june 2020
+
+Create sample api and send dummy data. 
+
+https://expressjs.com/en/guide/routing.html
+
+const express = require('express')
+const app = express()
+const port = 3000
+ 
+ 
+app.get('/', function(req, res){
+   res.send('Hello World')
+})
+ 
+//app.get('/', (req, res) => res.send('Hello World!'))
+ 
+app.get('/api/note', function (req, res) {
+   res.send('get request happening')
+ })
+ app.get('/api/note/:noteId', function (req, res) {
+   res.send('get request happening')
+ })
+app.post('/api/note', function (req, res) {
+   res.send('post request happening')
+ })
+app.delete('/api/note', function(req,res){
+   res.send('id 5 has to delete')
+})
+ 
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+
+
+
+30th june 2020
+
+How to send json data and string as response.
+Learn and understand body parser, middleware
+Learn Git ignore
+Divide and conquer rule
+Postman  ==> post data and get data practise 
+Rate limiting-  proxy implement- 
+
+Postman test api-   
+Test post api in postman using post method. 
+POST
+http://dummy.restapiexample.com/api/v1/create
+
+Json data => request----    {"name":"test","salary":"123","age":"23"}
+Json data response -----    {
+    "status": "success",
+    "data": {
+        "name": "test",
+        "salary": "123",
+        "age": "23",
+        "id": 25
+    }
+}
+
+
+25th July 2020
+
+Include body parser middleware and implement it in your post api.  Test it in local server 
+http://expressjs.com/en/resources/middleware/body-parser.html
+https://stackabuse.com/get-http-post-body-in-express-js/
+https://stackabuse.com/get-query-strings-and-parameters-in-express-js/
+https://medium.com/@adamzerner/middleware-in-express-60d75055ba8f
+https://medium.com/@adamzerner/how-bodyparser-works-247897a93b90
+
+
+We will study about body-parser middleware.  We will cover three types of body parser.
+
+1. URL-encoded form body-parser
+2. JSON body parser
+3. Text body parser
+
+
+Json body parser.
+I will send request in json format and perform post request.  Then in term of response i will receive the request body.  I will use postman for performing this request. 
+            Post request: http://localhost:3001/post-test   JSON (application/json)
+	{"name":"test1","salary":"123","age":"24"}
+
+	Response= request.body = 
+{
+	"name": "test1",
+	"salary": "123",
+	"age": "24"
+}
+
+
+const express = require('express')
+const app = express()
+const port = 3001
+const path = require('path');
+const bodyParser = require('body-parser');
+ 
+//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.post('/post-test', (req,res)=>{
+   //console.log('got body:', req.body);
+   //res.sendStatus(200);
+   res.json(req.body);
+   console.log(req.body);
+});
+ 
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+ 
+
+
+ 
+           
+
+
+30th July 2020
+
+
+1. mysql connection with express
+2. read data from mysql database and log the data into the console.
+3. return data read using query from database to rest api
+
+1 and 2 
+var mysql = require('mysql');
+const express = require("express");
+const app = express();
+ 
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "123456789",
+ database: "todolist"
+});
+con.connect(function(err) {
+ if (err) throw err;
+ con.query("SELECT * FROM users", function(err, results, fields){
+   if (err) throw err;
+  console.log(results);
+  console.log("Connected!");
+ });
+});
+
+
+
+
+
+
+09 august 2020
+Write login post api for testing and test in postman
+Study about ORM. object relational mapping
+
+
+Reference for get and post api testing using postman (write line by line tutorial for this)
+https://www.js-tutorials.com/nodejs-tutorial/node-js-rest-api-add-edit-delete-record-mysql-using-express/
+Getting started with express. Initial setup
+https://codeburst.io/getting-started-with-expressjs-3cbb279bd5e6
+
+	
+	 						
+//rest api to get all results
+
+app.get('/employees', function (req, res) {
+   console.log(req);
+   connection.query('select * from employee', function (error, results, fields) {
+	  if (error) throw error;
+	  res.end(JSON.stringify(results));
+	});
+});
+
+
+//rest api to get a single employee data
+app.get('/employees/:id', function (req, res) {
+   connection.query('select * from employee where id=?', [req.params.id], function (error, results, fields) {
+	  if (error) throw error;
+	  res.end(JSON.stringify(results));
+	});
+});
+
+
+
+
+
+Login api using post method. And verify through postman. 
+
+
+var mysql = require('mysql');
+const express = require("express");
+const app = express();
+var bodyParser = require('body-parser');
+ 
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "123456789",
+ database: "todolist"
+});
+ 
+app.use(bodyParser.json());
+ 
+app.post('/login', function(req,res, next){
+   //var data = req.body;
+   var id = req.body.id;
+   var name = req.body.name;
+   var password = req.body.password;
+   sql = `INSERT INTO users(id,name,password,created_on) VALUES ("${id}", "${name}", "${password}",NOW())`;
+   con.query(sql, function(error, result){
+   if (error) throw error;
+   res.json(req.body);
+       //res.end(JSON.stringify(results));
+   });
+});
+app.listen(3000, function () {
+   console.log('Example app listening on port 3000');
+   });
+
+Run this code and start mysql.  Then open postman. Select post method. Then 
+Write in url, http://localhost:3000/login   go in body section,
+
+Input :     {"id":"14", "name":"bittu","password":"56742"}
+You will get response in body section in bottom section, 
+
+{
+	"id": "14",
+	"name": "bittu",
+	"password": "56742"
+}
+
+
+If you get a response the same as input, go ahead. 
+
+
+
+
+17 August 2020
+
+Make login api and verify with the existing users. If that matching,give response true otherwise false
+How to define unique constraints in sql. --- to set up a unique username in the database. 
+Make login and registration api and test with postman.
+
+http://mfikri.com/en/blog/nodejs-restful-api-mysql
+
+Login api
+
+var mysql = require('mysql');
+const express = require("express");
+const app = express();
+var bodyParser = require('body-parser');
+ 
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "123456789",
+ database: "todolist"
+});
+ 
+app.use(bodyParser.json());
+ 
+app.post('/login', function(req,res, next){
+    var id = req.body.id;
+   var name = req.body.name;
+   var password = req.body.password;
+   sql = `SELECT * FROM users WHERE  name = "${req.body.name}" and password = "${req.body.password}"`
+   con.query(sql, function(error, result){
+   if (error) throw error;
+   const response = {
+       success: result.length == 1
+   };
+   res.json(response);
+   });
+});
+ 
+ 
+app.listen(3000, function () {
+   console.log('Example app listening on port 3000');
+   });
+
+
+
+
+
+
+Login and registration api, Description
+
+Registration api, 
+(id, name, password, created_on)
+
+id and created_on will be auto_increment 
+Name should always be unique. It will act as user name. This name will be compared with existing all name from user table, then 
+		Response = user exist. Please enter different name or login
+password should be alpha-numeric of at least 8 characters. 
+If above conditions satisfy then this api should be called successfully. And insertion of data will be done.
+Response =  registration done successfully
+
+
+
+
+Login api
+(id, name, password, created_on)
+Name should already exist. For that when we do post request then 
+It will match this name from user table, if that is available and password is correct with respect to that user then 
+Response = Login successful 
+
+
+
+var mysql = require('mysql');
+const express = require("express");
+const app = express();
+var bodyParser = require('body-parser');
+ 
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "123456789",
+ database: "todolist"
+});
+ 
+app.use(bodyParser.json());
+ 
+app.post('/login', function(req,res, next){
+   //var id = req.body.id; var name = req.body.name;var password = req.body.password;
+   sql = `SELECT * FROM users WHERE  name = "${req.body.name}" and password = "${req.body.password}"`
+   con.query(sql, function(error, result){
+   if (error) throw error;
+   const response = {
+       success: result.length == 1
+   };
+   res.json(response);
+   });
+});
+ 
+app.post('/registration', function(req,res,next){
+   // sql= `INSERT INTO users(name,password,created_on) VALUES("${req.body.name}","${req.body.password}",NOW()) `
+   sql = `SELECT * FROM users WHERE  name = "${req.body.name}"`;
+   con.query(sql, function(error,result){
+        if (error) {
+            throw error;
+        }
+        else if (result.length == 1){
+            return res.json({success: 'user exist'});
+        }
+        else
+           return res.json({success: 'new registration can be done' });
+    });
+});
+ 
+app.listen(3000, function(){
+   console.log("app listening on 3000 port")
+});
+
+
+
+Final login, registration, insertnote API
+
+
+const mysql = require('mysql');
+const express = require("express");
+const app = express();
+var bodyParser = require('body-parser');
+const moment = require("moment");
+const jwt = require("jsonwebtoken");
+ 
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "todolist"
+});
+ 
+const secret = "secretKey";
+app.use(bodyParser.json());
+ 
+ 
+app.post('/login', function (req, res, next) {
+    sql = `SELECT * from users WHERE name = "${req.body.name}"`
+    con.query(sql, function (error, result) {
+        if (error) {
+            throw error;
+        }
+        else if (result.length == 0) {
+            res.json({ success: "user doesn't exist", })
+            //console.log(result)
+ 
+        }
+        else if (result.length == 1) {
+            if (result[0].password == req.body.password) {
+                res.json({
+                    success: "login can be done",
+                    userid: result[0].id
+                })
+            }
+            else {
+                res.json({ success: "wrong password" })
+            }
+        }
+ 
+    })
+})
+ 
+app.post('/registration', function (req, res, next) {
+    req.body.created_on = moment().format('YYYY-MM-DD HH:mm:ss');
+    sql1 = `SELECT * FROM users WHERE name = "${req.body.name}"`;
+    con.query(sql1, function (error, result) {
+        if (error) {
+            throw error;
+        }
+        else if (result.length == 1) {
+            return res.json({ success: 'user exist' });
+        }
+        else {
+            sql2 = `INSERT INTO users(name,password,created_on) VALUES("${req.body.name}","${req.body.password}", "${req.body.created_on}")`
+            con.query(sql2, function (error, result) {
+                if (error) {
+                    throw error;
+                    //return res.json({success: 'error'})
+                }
+                else {
+                    return res.json({ success: 'new registration done' }); ``
+                }
+            });
+        }
+    });
+});
+ 
+app.post('/insertpost', function (req, res, next) {
+    sql = `INSERT INTO notes (notes,user_id, updated_on,deleted_on) VALUES("${req.body.notes}","${req.body.user_id}", NOW(), NOW())`
+    con.query(sql, function (error, result) {
+        if (error) throw error;
+        const response = {
+            success: true
+        };
+        res.json(response);
+    });
+});
+ 
+var myLogger = function (req, res, next) {
+    if (!req.headers.userid) {
+        res.json({ success: "unauthorised", code: "401" })
+        return;
+    }
+    sql = `SELECT * from users WHERE id = "${req.headers.userid}"`
+    con.query(sql, function (error, result) {
+        if (error) throw error;
+        if (result.length == 1) {
+            req.userInfo = result[0];
+            next()
+ 
+        }
+        else {
+            res.json({ success: "unauthorised", code: "401" })
+        }
+    })
+}
+ 
+app.post('/test', myLogger, function (req, res, next) {
+ 
+    res.json({ success: "authorised", user: req.userInfo })
+})
+ 
+ 
+app.post('/testapi', function (req, res, next) {
+    sql = `SELECT * FROM users`
+    con.query(sql, function (error, result) {
+        if (error) throw error;
+        res.json(result);
+    });
+});
+ 
+app.listen(3000, function () {
+    console.log("app listening on 3000 port")
+});
+ 
+
+
+
+
+
+Middleware sample code (verified)
+
+Verified code. 
+var myLogger = function (req, res, next) {
+   if (!req.headers.userid) {
+      res.json({ success: "unauthorised", code: "401" })
+      return;
+   }
+   sql = `SELECT * from users WHERE id = "${req.headers.userid}"`
+   con.query(sql, function (error, result) {
+      if (error) throw error;
+      if (result.length == 1) {
+         req.userInfo= result[0];
+         next()
+ 
+      }
+      else {
+         res.json({ success: "unauthorised", code: "401" })
+      }
+   })
+}
+//app.use(myLogger)
+ 
+app.post('/test', myLogger, function (req, res, next) {
+ 
+   res.json({ success: "authorised", user:req.userInfo })
+})
+ 
+app.listen(3000, function () {
+   console.log("app listening on 3000 port")
+});
+
+
+
+
+
+
+
+Api using JWT.
+
+const mysql = require('mysql');
+const express = require("express");
+const app = express();
+var bodyParser = require('body-parser');
+const moment = require("moment");
+const jwt = require("jsonwebtoken");
+ 
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Mysql@strong",
+    database: "todolist"
+});
+ 
+const secret = "secretKey";
+app.use(bodyParser.json());
+ 
+ 
+// create a new note
+app.post('/api/note', verifyToken, (req, res) => {
+    sql = `insert into notes (notes, user_id, updated_on, deleted_on) values ("${req.body.notes}","${req.userInfo.id}" , now(), now()); `
+    con.query(sql, function (error, result) {
+        if (error) throw error
+        res.json({ success: true, message: "new notes inserted" })
+    })
+    // res.json({
+    // message: "post created",
+    // userInfo: req.userInfo
+    //});
+});
+ 
+// update a note
+app.put('/api/note/:noteId', verifyToken, (req, res) => {
+    res.json({
+        message: "post created",
+        userInfo: req.userInfo
+    });
+});
+ 
+ 
+// delete a note
+app.delete('/api/note/:noteId', verifyToken, (req, res) => {
+    res.json({
+        message: "post created",
+        userInfo: req.userInfo
+    });
+});
+ 
+ 
+// get just one single note
+app.get('/api/note/:noteId', verifyToken, (req, res) => {
+    sql = `Select * from notes where user_id="${req.userInfo.id}"`
+    res.json({
+        message: "post created",
+        userInfo: req.userInfo
+    });
+});
+ 
+// get all notes
+app.get('/api/note', verifyToken, (req, res) => {
+    sql = `Select * from notes where user_id="${req.userInfo.id}"`
+    con.query(sql, function (error, result) {
+        if (error) throw error;
+        res.json({
+            message: result,
+            userInfo: req.userInfo,
+            userId: req.userInfo.id
+ 
+        });
+    });
+});
+ 
+ 
+app.post('/api/login', function (req, res, next) {
+    sql = `SELECT * from users WHERE name = "${req.body.name}"`
+    con.query(sql, function (error, result) {
+        if (error) {
+            throw error;
+        }
+        else if (result.length == 0) {
+            res.json({ success: "user doesn't exist", })
+            //console.log(result)
+ 
+        }
+        else if (result.length == 1) {
+            if (result[0].password == req.body.password) {
+                jwt.sign({ user: result[0] }, "secretkey", (err, token) => {
+                    res.json({
+                        token: token, sucess: "login can be done"
+                    })
+                })
+            }
+            else {
+                res.json({ success: "wrong password" })
+            }
+        }
+ 
+    })
+})
+ 
+app.post('/registration', function (req, res, next) {
+    req.body.created_on = moment().format('YYYY-MM-DD HH:mm:ss');
+    sql1 = `SELECT * FROM users WHERE name = "${req.body.name}"`;
+    con.query(sql1, function (error, result) {
+        if (error) {
+            throw error;
+        }
+        else if (result.length == 1) {
+            return res.json({ success: 'user exist' });
+        }
+        else {
+            sql2 = `INSERT INTO users(name,password,created_on) VALUES("${req.body.name}","${req.body.password}", "${req.body.created_on}")`
+            con.query(sql2, function (error, result) {
+                if (error) {
+                    throw error;
+                    //return res.json({success: 'error'})
+                }
+                else {
+                    return res.json({ success: 'new registration done' }); ``
+                }
+            });
+        }
+    });
+});
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization']
+    if (typeof bearerHeader !== 'undefined') {
+        const bearerToken = bearerHeader.split(' ')[1]
+        jwt.verify(bearerToken, "secretkey", (err, authData) => {
+            if (err) {
+                res.sendStatus(403)
+            }
+            else {
+                req.userInfo = authData.user
+                next()
+            }
+        });
+    }
+    else {
+        res.sendStatus(403)
+    }
+}
+ 
+ 
+ 
+app.listen(3000, function () {
+    console.log("app listening on 3000 port")
+});
+ 
+
+
+
